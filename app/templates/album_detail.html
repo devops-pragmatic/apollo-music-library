@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ album.title }} - Apollo Music Library</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ album.title }}</h1>
+        <div class="nav-buttons">
+            <a href="{{ url_for('add_song', album_id=album.id) }}" class="button">Add Song</a>
+            <a href="{{ url_for('artist_detail', artist_id=album.artist.id) }}" class="button">Back to Artist</a>
+        </div>
+        <h2>Songs</h2>
+        {% if album.songs %}
+        <ul class="song-list">
+            {% for song in album.songs %}
+            <li>
+                <h3>{{ song.title }}</h3>
+                <p>Length: {{ song.length_seconds }} seconds</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No songs found for this album.</p>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 

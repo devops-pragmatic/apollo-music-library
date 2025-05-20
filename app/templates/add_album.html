@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Album - Apollo Music Library</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Album for {{ artist.name }}</h1>
+        <form method="POST" action="{{ url_for('add_album', artist_id=artist.id) }}">
+            <div class="form-group">
+                <label for="title">Album Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <button type="submit">Add Album</button>
+        </form>
+        <a href="{{ url_for('artist_detail', artist_id=artist.id) }}">Back to Artist</a>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
